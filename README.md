@@ -25,17 +25,17 @@ _*Dont forget to fork & star repo*_
 </div>
 
 <div align="center">
-  <img src="https://github.com/Vinpink2/JUNE-XD/blob/main/assets/divider.gif?raw=true" width="100%"/>
+  <img src="https://github.com/giftedsession/DAVE-MD/blob/main/assets/divider.gif?raw=true" width="100%"/>
 </div>
 <div align="center">
-  <img src="https://github.com/Vinpink2/JUNE-XD/blob/main/assets/deployheader.gif?raw=true" width="80%"/>
+  <img src="https://github.com/giftedsession/DAVE-MD/blob/main/assets/deployheader.gif?raw=true" width="80%"/>
 </div>
 <div align="center">
   <a href="githublink"><img title="Followers" src="https://img.shields.io/github/followers/JawadYT36?color=EB5406&style=for-the-badge&logo=github&logoColor=white"></a>
   <a href="repolink"><img title="Stars" src="https://img.shields.io/github/stars/JawadYT36/KHAN-MD?color=FFCE44&style=for-the-badge&logo=reverbnation&logoColor=white"></a>
-  <a href="https://github.com/Vinpink2/JUNE-XD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/JawadYT36/KHAN-MD?color=FF007F&style=for-the-badge&logo=git&logoColor=white"></a>
-  <a href="https://github.com/Vinpink2/JUNE-XD/"><img title="Size" src="https://img.shields.io/github/repo-size/JawadYT36/KHAN-MD?style=for-the-badge&color=FFF333&logo=docusign&logoColor=white"></a>
-  <a href="https://github.com/Vinpink2/JUNE-XD/graphs/commit-activity"><img height="28" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=gitpod&logoColor=white"></a>
+  <a href="https://github.com/giftedsession/DAVE-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/JawadYT36/KHAN-MD?color=FF007F&style=for-the-badge&logo=git&logoColor=white"></a>
+  <a href="https://github.com/giftedsession/DAVE-MD/"><img title="Size" src="https://img.shields.io/github/repo-size/JawadYT36/KHAN-MD?style=for-the-badge&color=FFF333&logo=docusign&logoColor=white"></a>
+  <a href="https://github.com/giftedsession/DAVE-MD/graphs/commit-activity"><img height="28" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=gitpod&logoColor=white"></a>
 </div>
 
 <p align="center">
@@ -48,7 +48,7 @@ _*Dont forget to fork & star repo*_
     
 <div style="background: #111111; padding: 15px; border-radius: 10px; border-left: 3px solid #ff00ff;">
   <p style="color: #00ffff;">First star & Fork repo using button Below</p>
-  <a href='https://github.com/Vinpink2/JUNE-XD/fork' target="_blank">
+  <a href='https://github.com/giftedsession/DAVE-MD/fork' target="_blank">
     <img src='https://img.shields.io/badge/FORK_REPOSITORY-008000?style=for-the-badge&logo=github&logoColor=white&labelColor=000000'/>
   </a>
 </div>
