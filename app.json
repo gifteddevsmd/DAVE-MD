@@ -1,215 +1,176 @@
 {
   "name": "𝐃𝐀𝐕𝐄-𝐌𝐃",
   "description": "Javascript WhatsApp bot made by Dave",
-  "logo": "https://raw.githubusercontent.com/JawadYT36/KHAN-DATA/refs/heads/main/logo/dj.jpg",
+  "logo": "https://files.catbox.moe/7zfdcq.jpg",
   "keywords": ["DAVE-MD"],
   "success_url": "/",
-
-    "stack": "container",
+  "stack": "heroku-24",
   "env": {
     "SESSION_ID": {
       "description": "Put the session-id here.",
       "required": true,
       "value": ""
-    },  
-    
+    },
     "STICKER_NAME": {
-      "description": "type your sticker pack name.",
+      "description": "Type your sticker pack name.",
       "required": false,
       "value": "DAVE-MD"
-    }, 
-      
+    },
     "PREFIX": {
-      "description": "paste your bot prefix note! Don't apply null prefix.",
+      "description": "Paste your bot prefix. Note: Don't apply null prefix.",
       "required": false,
       "value": "."
     },
-    
     "MODE": {
-      "description": "select your bot work type public-private-inbox-group.",
+      "description": "Select your bot work type: public, private, inbox, or group.",
       "required": false,
       "value": "public"
-      
     },
-    
-    
     "ALWAYS_ONLINE": {
-      "description": "Make it true if want always online.",
+      "description": "Make it true if you want always online mode.",
       "required": false,
-      "value": "false"  
-    },    
-  
+      "value": "false"
+    },
     "AUTO_VOICE": {
-      "description": "Make it true if want automatic voice reply .",
+      "description": "Enable automatic voice replies.",
       "required": false,
       "value": "false"
-    }, 
-
+    },
     "AUTO_REPLY": {
-      "description": "Make it true if you want automatic reply.",
+      "description": "Enable automatic replies.",
       "required": false,
       "value": "false"
-    }, 
-
+    },
     "AUTO_STICKER": {
-      "description": "Make it true if you want automatic sticker.",
+      "description": "Enable automatic sticker sending.",
       "required": false,
       "value": "false"
-    }, 
-
-
+    },
     "AUTO_STATUS_SEEN": {
-      "description": "Make it true for automatic status seen.",
+      "description": "Enable auto view status.",
       "required": true,
       "value": "true"
-    }, 
-
+    },
     "AUTO_STATUS_REACT": {
-      "description": "make it true for automatic status reaction or like.",
+      "description": "Enable auto status reaction.",
       "required": true,
       "value": "true"
-    }, 
-
+    },
     "AUTO_STATUS_REPLY": {
-      "description": "Make it true for auto reply msg on status seen.",
+      "description": "Enable auto reply to status.",
       "required": true,
       "value": "false"
-    }, 
-
+    },
     "AUTO_STATUS_MSG": {
-      "description": "Type custom message on status reply",
+      "description": "Custom message on status reply.",
       "required": true,
       "value": "*SEEN YOUR STATUS BY DAVE-MD 🖤*"
-   
-     }, 
-    
+    },
     "OWNER_NAME": {
-      "description": "Type Bot Owner Name.",
+      "description": "Bot Owner Name.",
       "required": false,
       "value": "Dave"
-}, 
-
+    },
     "OWNER_NUMBER": {
-      "description": "put the owner number for bot.",
+      "description": "Owner number for the bot.",
       "required": false,
-      "value": "254798952773"
-
-    }, 
-
+      "value": "254104260236"
+    },
     "BOT_NAME": {
-      "description": "Type here the bot name.",
+      "description": "Bot Name.",
       "required": false,
       "value": "DAVE-MD"
-
-      }, 
-
+    },
     "ANTI_LINK": {
-      "description": "Make it true if you want bot auto remove group link.",
+      "description": "Enable to auto remove group links.",
       "required": true,
       "value": "true"
-      
     },
-
-     "ANTI_LINK_KICK": {
-      "description": "Make it true if you want bot auto remove group link.",
+    "ANTI_LINK_KICK": {
+      "description": "Enable to kick users who send links.",
       "required": true,
       "value": "false"
-      
     },
-    
     "ANTI_BAD": {
-      "description": "Make it true if you want bot auto delete bad words.",
+      "description": "Enable to auto delete bad words.",
       "required": false,
       "value": "false"
     },
-
-   "MENTION_REPLY": {
-      "description": "make it true if want mention reply if someone menetion you.",
+    "MENTION_REPLY": {
+      "description": "Enable auto reply when mentioned.",
       "required": false,
       "value": "false"
     },
-    
     "MENU_IMAGE_URL": {
-      "description": "add url for mention reply and menu if want.",
+      "description": "Image for bot menu and mention replies.",
       "required": false,
       "value": "https://files.catbox.moe/7zfdcq.jpg"
     },
-    
-     "DESCRIPTION": {
-      "description": "add caption for menu and other",
+    "DESCRIPTION": {
+      "description": "Caption for menu and bot info.",
       "required": false,
       "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ Dave*"
     },
-
-      "DELETE_LINKS": {
-      "description": "remove links from group automatically without removing member",
+    "DELETE_LINKS": {
+      "description": "Remove links without kicking.",
       "required": false,
       "value": "false"
     },
-    
     "AUTO_RECORDING": {
-      "description": "Make it true if you want auto recoding.",
+      "description": "Auto recording indicator.",
       "required": false,
       "value": "false"
     },
-
     "AUTO_TYPING": {
-      "description": "Make it true if you want auto typing.",
+      "description": "Auto typing indicator.",
       "required": false,
       "value": "false"
     },
-
     "AUTO_REACT": {
-      "description": "Make it true if you want react on every message.",
+      "description": "Auto react to all messages.",
       "required": false,
       "value": "false"
     },
-    
     "CUSTOM_REACT": {
-      "description": "Make it true if you want custom reactions.",
+      "description": "Enable custom emojis for react.",
       "required": false,
       "value": "false"
-      
-    }, 
-    
+    },
     "CUSTOM_REACT_EMOJIS": {
-      "description": "put here custom react react emojis.",
+      "description": "Custom emojis list.",
       "required": false,
       "value": "💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍"
-    }, 
-    
+    },
     "ANTI_DEL_PATH": {
-      "description": "change it to -same- if you want to resend deleted message in same chat",
+      "description": "Path to log deleted messages.",
       "required": false,
       "value": "log"
-    }, 
-
+    },
     "ADMIN_EVENTS": {
-      "description": "make it true if want know who promote or demote a member .",
+      "description": "Show promotion/demotion logs.",
       "required": false,
       "value": "false"
     },
-
     "WELCOME": {
-      "description": "make it true if want goodbye and welcome message in groups.",
+      "description": "Enable welcome and goodbye messages.",
       "required": false,
       "value": "true"
     },
-
     "READ_MESSAGE": {
-      "description": "Make it true if you want bot read your all sms just now.",
+      "description": "Bot reads all incoming messages.",
       "required": false,
       "value": "false"
     }
-
-},
-
-     "buildpacks": [
-        {
-            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
-        }
-     ],
-  "stack": "heroku-24"
-}
-
-    
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    },
+    {
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ]
+  }
