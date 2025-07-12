@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dave-md-bot
+    env: docker
+    repo: https://github.com/gifteddevsmd/DAVE-XMD  # Replace if needed
+    branch: main  # or whichever branch you're deploying from
+    dockerfilePath: Dockerfile
+    buildCommand: ""  # Docker handles it
+    startCommand: "pm2-runtime index.js"
+    autoDeploy: true
+    plan: free
