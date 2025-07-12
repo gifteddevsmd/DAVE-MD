@@ -8,7 +8,7 @@
 
 
 
-> **Current Bot Version `1.2.0`**  
+> **Current Bot Version `2.0.0`**  
 
 ---
 
