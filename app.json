@@ -2,9 +2,8 @@
   "name": "𝐃𝐀𝐕𝐄-𝐌𝐃",
   "description": "Javascript WhatsApp bot made by Dave",
   "logo": "https://files.catbox.moe/7zfdcq.jpg",
-  "keywords": ["DAVE-MD"],
+  "keywords": ["DAVE-MD", "WhatsApp", "Bot"],
   "success_url": "/",
-  "stack": "heroku-24",
   "env": {
     "SESSION_ID": {
       "description": "Put the session-id here.",
@@ -164,13 +163,8 @@
   },
   "buildpacks": [
     {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
-    },
-    {
-      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
     }
-  ]
-  }
+  ],
+  "stack": "heroku-24"
+    }
