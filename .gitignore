@@ -25,4 +25,4 @@ session.data.json
 auth_info.json
 pre-key.json
 Baileys_auth_info.json
-reports.json
+echo .env >> .gitignore
