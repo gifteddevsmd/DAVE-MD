@@ -1,21 +1,21 @@
-# Use latest stable Node.js base image
+# Use latest stable Node.js image
 FROM node:lts
 
 # Create and set working directory
 WORKDIR /app
 
-# Copy only package.json and install dependencies first (for caching)
+# Copy package.json and install dependencies
 COPY package.json ./
 RUN npm install
 
-# Copy rest of the bot files
+# Copy all other files
 COPY . .
 
 # Install PM2 globally
 RUN npm install -g pm2
 
-# Expose port (used if you add web dashboard, not needed for WhatsApp-only bots)
+# Optional: expose port for web apps (not needed for WhatsApp bot)
 EXPOSE 9090
 
-# Start the bot using PM2
+# Start the bot with PM2
 CMD ["pm2-runtime", "index.js"]
