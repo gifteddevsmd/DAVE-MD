@@ -554,4 +554,199 @@ conn.sendFile = async(jid, PATH, fileName, quoted = {}, options = {}) => {
 conn.parseMention = async(text) => {
   return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 				   }
-				    
+
+	  
+//=====================================================
+conn.sendMedia = async(jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
+  let types = await conn.getFile(path, true)
+  let { mime, ext, res, data, filename } = types
+  if (res && res.status !== 200 || data.length <= 65536) {
+      try { throw { json: JSON.parse(data.toString()) } } catch (e) { if (e.json) throw e.json }
+  }
+  let type = '',
+      mimetype = mime,
+      pathFile = filename
+  if (options.asDocument) type = 'document'
+  if (options.asSticker || /webp/.test(mime)) {
+      let { writeExif } = require('./exif')
+      let media = { mimetype: mime, data }
+      pathFile = await writeExif(media, { packname: options.packname ? options.packname : Config.packname, author: options.author ? options.author : Config.author, categories: options.categories ? options.categories : [] })
+      await fs.promises.unlink(filename)
+      type = 'sticker'
+      mimetype = 'image/webp'
+  } else if (/image/.test(mime)) type = 'image'
+  else if (/video/.test(mime)) type = 'video'
+  else if (/audio/.test(mime)) type = 'audio'
+  else type = 'document'
+  await conn.sendMessage(jid, {
+      [type]: { url: pathFile },
+      caption,
+      mimetype,
+      fileName,
+      ...options
+  }, { quoted, ...options })
+  return fs.promises.unlink(pathFile)
+}
+
+//=====================================================
+conn.sendVideoAsSticker = async (jid, buff, options = {}) => {
+  let buffer;
+  if (options && (options.packname || options.author)) {
+    buffer = await writeExifVid(buff, options);
+  } else {
+    buffer = await videoToWebp(buff);
+  }
+  await conn.sendMessage(
+    jid,
+    { sticker: { url: buffer }, ...options },
+    options
+  );
+};
+
+//=====================================================
+conn.sendImageAsSticker = async (jid, buff, options = {}) => {
+  let buffer;
+  if (options && (options.packname || options.author)) {
+    buffer = await writeExifImg(buff, options);
+  } else {
+    buffer = await imageToWebp(buff);
+  }
+  await conn.sendMessage(
+    jid,
+    { sticker: { url: buffer }, ...options },
+    options
+  );
+};
+
+//=====================================================
+conn.sendTextWithMentions = async(jid, text, quoted, options = {}) => conn.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+
+//=====================================================
+conn.sendImage = async(jid, path, caption = '', quoted = '', options) => {
+  let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split `,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+  return await conn.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
+}
+
+//=====================================================
+conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { text: text, ...options }, { quoted })
+
+//=====================================================
+conn.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
+  let buttonMessage = {
+    text,
+    footer,
+    buttons,
+    headerType: 2,
+    ...options
+  }
+  conn.sendMessage(jid, buttonMessage, { quoted, ...options })
+}
+
+//=====================================================
+conn.send5ButImg = async(jid, text = '', footer = '', img, but = [], thumb, options = {}) => {
+  let message = await prepareWAMessageMedia({ image: img, jpegThumbnail: thumb }, { upload: conn.waUploadToServer })
+  var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+    templateMessage: {
+      hydratedTemplate: {
+        imageMessage: message.imageMessage,
+        "hydratedContentText": text,
+        "hydratedFooterText": footer,
+        "hydratedButtons": but
+      }
+    }
+  }), options)
+  conn.relayMessage(jid, template.message, { messageId: template.key.id })
+}
+
+//=====================================================
+conn.getName = (jid, withoutContact = false) => {
+  let id = conn.decodeJid(jid);
+  withoutContact = conn.withoutContact || withoutContact;
+  let v;
+            if (id.endsWith('@g.us'))
+    return new Promise(async resolve => {
+        v = store.contacts[id] || {};
+
+        if (!(v.name || v.subject))
+            v = await conn.groupMetadata(id).catch(() => ({}));
+
+        resolve(
+            v.name ||
+            v.subject ||
+            PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international')
+        );
+    });
+else
+    v =
+        id === '0@s.whatsapp.net'
+            ? { id, name: 'WhatsApp' }
+            : id === conn.decodeJid(conn.user.id)
+            ? conn.user
+            : store.contacts[id] || {};
+
+return (
+    (withoutContact ? '' : v.name) ||
+    v.subject ||
+    v.verifiedName ||
+    PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
+);
+
+// Vcard Functionality
+conn.sendContact = async (jid, kon, quoted = '', opts = {}) => {
+    let list = [];
+    for (let i of kon) {
+        const contactJid = i + '@s.whatsapp.net';
+        const name = await conn.getName(contactJid);
+        list.push({
+            displayName: name,
+            vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nFN:${global.OwnerName}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${global.email}\nitem2.X-ABLabel:Email\nitem3.URL:https://github.com/${global.github}/gotar-xmd\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${global.location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`,
+        });
+    }
+    conn.sendMessage(
+        jid,
+        {
+            contacts: {
+                displayName: `${list.length} Contact(s)`,
+                contacts: list,
+            },
+            ...opts,
+        },
+        { quoted }
+    );
+};
+
+// Status aka brio
+conn.setStatus = status => {
+    conn.query({
+        tag: 'iq',
+        attrs: {
+            to: '@s.whatsapp.net',
+            type: 'set',
+            xmlns: 'status',
+        },
+        content: [
+            {
+                tag: 'status',
+                attrs: {},
+                content: Buffer.from(status, 'utf-8'),
+            },
+        ],
+    });
+    return status;
+};
+
+conn.serializeM = mek => sms(conn, mek, store);
+}
+
+// Express Landing Page
+app.get("/", (req, res) => {
+    res.send("DAVE-MD STARTED ✅");
+});
+
+// Web Server Start
+app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
+
+// WA Connect Trigger
+setTimeout(() => {
+    connectToWA();
+}, 4000);
