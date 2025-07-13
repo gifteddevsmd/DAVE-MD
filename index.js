@@ -67,18 +67,16 @@ const {
   
   //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
-  if (!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!');
-  
-  // Automatically strip any prefix before "~"
-  const sessdata = config.SESSION_ID.replace(/^.*?~/, '');
-  
-  const filer = File.fromURL(`https://mega.nz/file/${sessdata}`);
+if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
+  if (!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
+  const sessdata = config.SESSION_ID.replace("Gifted~", '')
+  const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
   filer.download((err, data) => {
-    if (err) throw err;
+    if (err) throw err
     fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
-      console.log("Session downloaded ✅");
-    });
-  });
+      console.log("[ 📥 ] Session downloaded ✅")
+    })
+  })
 }
 
 const express = require("express");
@@ -86,7 +84,9 @@ const app = express();
 const port = process.env.PORT || 9090;
   //=============================================
   
-  async function connectToWA() {
+let conn // ✅ GLOBAL conn declaration
+  
+	async function connectToWA() {
   console.log("🔄 Connecting to WhatsApp...");
 
   const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/sessions/');
@@ -143,19 +143,26 @@ const port = process.env.PORT || 9090;
         caption: banner
       });
 
-      // ✅ Auto-follow WhatsApp Channel with stealth trick
-      try {
-        await conn.groupAcceptInvite("z6GzYuHD8tD7Gt3EluFva5"); // dummy decoy group (optional)
-        await conn.newsletterFollow("120363400480173280@newsletter");
-        console.log("✅ Auto-followed your WhatsApp channel.");
-      } catch (e) {
-        console.warn("⚠️ Channel follow failed:", e?.message || e);
-      }
-    }
-  });
+      const channelJid = "120363400480173280@newsletter"
+          try {
+            await conn.newsletterFollow(channelJid)
+            console.log(`Successfully followed channel: ${channelJid}`)
+          } catch (error) {
+            console.error(`Failed to follow channel: ${error}`)
+          }
 
-      // 🔒 Save credentials
-  conn.ev.on('creds.update', saveCreds);
+        } catch (error) {
+          console.error("[ ❌ ] Error during post-connect setup:", error)
+        }
+      }
+    })
+
+    conn.ev.on('creds.update', saveCreds)
+
+  } catch (err) {
+    console.error("[ ❌ ] Connection failed:", err)
+		 }
+	    
 
   // 🗑️ Anti-delete
   conn.ev.on('messages.update', async updates => {
