@@ -2,8 +2,8 @@
   "name": "𝐃𝐀𝐕𝐄-𝐌𝐃",
   "description": "Javascript WhatsApp bot made by Dave",
   "logo": "https://files.catbox.moe/7zfdcq.jpg",
-  "keywords": ["DAVE-MD", "WhatsApp", "Bot"],
-  "success_url": "/",
+  "repository": "https://github.com....",
+  "keywords": ["DAVE-MD", "WhatsApp", "Bot", "Baileys", "Heroku"],
   "env": {
     "SESSION_ID": {
       "description": "Put the session-id here.",
@@ -11,160 +11,75 @@
       "value": ""
     },
     "STICKER_NAME": {
-      "description": "Type your sticker pack name.",
-      "required": false,
+      "description": "Your sticker pack name.",
       "value": "DAVE-MD"
     },
     "PREFIX": {
-      "description": "Paste your bot prefix. Note: Don't apply null prefix.",
-      "required": false,
+      "description": "Command prefix for your bot.",
       "value": "."
     },
     "MODE": {
-      "description": "Select your bot work type: public, private, inbox, or group.",
-      "required": false,
+      "description": "Bot mode: public, private, group, inbox",
       "value": "public"
     },
-    "ALWAYS_ONLINE": {
-      "description": "Make it true if you want always online mode.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_VOICE": {
-      "description": "Enable automatic voice replies.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_REPLY": {
-      "description": "Enable automatic replies.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_STICKER": {
-      "description": "Enable automatic sticker sending.",
-      "required": false,
-      "value": "false"
-    },
     "AUTO_STATUS_SEEN": {
-      "description": "Enable auto view status.",
-      "required": true,
+      "description": "Auto view status.",
       "value": "true"
     },
     "AUTO_STATUS_REACT": {
-      "description": "Enable auto status reaction.",
-      "required": true,
+      "description": "Auto react to viewed status.",
       "value": "true"
     },
     "AUTO_STATUS_REPLY": {
-      "description": "Enable auto reply to status.",
-      "required": true,
+      "description": "Auto reply to status.",
       "value": "false"
     },
     "AUTO_STATUS_MSG": {
-      "description": "Custom message on status reply.",
-      "required": true,
+      "description": "Message for status replies.",
       "value": "*SEEN YOUR STATUS BY DAVE-MD 🖤*"
     },
     "OWNER_NAME": {
-      "description": "Bot Owner Name.",
-      "required": false,
+      "description": "Owner name",
       "value": "Dave"
     },
     "OWNER_NUMBER": {
-      "description": "Owner number for the bot.",
-      "required": false,
+      "description": "Owner's WhatsApp number.",
       "value": "254104260236"
     },
     "BOT_NAME": {
-      "description": "Bot Name.",
-      "required": false,
+      "description": "Bot display name.",
       "value": "DAVE-MD"
     },
-    "ANTI_LINK": {
-      "description": "Enable to auto remove group links.",
-      "required": true,
-      "value": "true"
-    },
-    "ANTI_LINK_KICK": {
-      "description": "Enable to kick users who send links.",
-      "required": true,
-      "value": "false"
-    },
-    "ANTI_BAD": {
-      "description": "Enable to auto delete bad words.",
-      "required": false,
-      "value": "false"
-    },
-    "MENTION_REPLY": {
-      "description": "Enable auto reply when mentioned.",
-      "required": false,
-      "value": "false"
-    },
     "MENU_IMAGE_URL": {
-      "description": "Image for bot menu and mention replies.",
-      "required": false,
+      "description": "Image used in menu or replies.",
       "value": "https://files.catbox.moe/7zfdcq.jpg"
     },
     "DESCRIPTION": {
-      "description": "Caption for menu and bot info.",
-      "required": false,
+      "description": "Bot footer or credits.",
       "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ Dave*"
-    },
-    "DELETE_LINKS": {
-      "description": "Remove links without kicking.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_RECORDING": {
-      "description": "Auto recording indicator.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_TYPING": {
-      "description": "Auto typing indicator.",
-      "required": false,
-      "value": "false"
-    },
-    "AUTO_REACT": {
-      "description": "Auto react to all messages.",
-      "required": false,
-      "value": "false"
-    },
-    "CUSTOM_REACT": {
-      "description": "Enable custom emojis for react.",
-      "required": false,
-      "value": "false"
-    },
-    "CUSTOM_REACT_EMOJIS": {
-      "description": "Custom emojis list.",
-      "required": false,
-      "value": "💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍"
-    },
-    "ANTI_DEL_PATH": {
-      "description": "Path to log deleted messages.",
-      "required": false,
-      "value": "log"
-    },
-    "ADMIN_EVENTS": {
-      "description": "Show promotion/demotion logs.",
-      "required": false,
-      "value": "false"
-    },
-    "WELCOME": {
-      "description": "Enable welcome and goodbye messages.",
-      "required": false,
-      "value": "true"
-    },
-    "READ_MESSAGE": {
-      "description": "Bot reads all incoming messages.",
-      "required": false,
-      "value": "false"
     }
   },
   "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
     }
   ],
-  "stack": "heroku-24"
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "standard-1x"
     }
+  },
+  "scripts": {
+    "postdeploy": "echo ✅ 𝐃𝐀𝐕𝐄-𝐌𝐃 Deployed Successfully"
+  }
+}
