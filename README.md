@@ -62,7 +62,7 @@ _*Dont forget to fork & star repo*_
 ---
 
 
-## 🔐 DAVE-PAIR — Get Your Session ID
+## 🔐 Get Your Session ID
 
 Get your WhatsApp session from one of the pairing sites below:
 
@@ -91,6 +91,10 @@ Click on any platform below to deploy the bot instantly
 ### 📦 Source
 This setup powers the **𝐃𝐀𝐕𝐄-𝐌𝐃** WhatsApp bot.  
 GitHub: [https://github.com/giftedsession/DAVE-MD](https://github.com/giftedsession/DAVE-PAIR)
+
+
+
+
 
 
 
