@@ -141,7 +141,7 @@ const port = process.env.PORT || 9090;
   });
   //============================== 
 
-  conn.ev.on("group-participants.update", (update) => GroupEvents(conn, update));	  
+conn.ev.on("group-participants.update", (update) => GroupEvents(conn, update));	  
 	  
   //=============readstatus=======
         
@@ -241,4 +241,21 @@ const port = process.env.PORT || 9090;
 							`Provide me with a query to run Master!`,
 						);
 						return;
-}
+					}
+					try {
+						let resultTest = await eval(
+							'const a = async()=>{\n' + code + '\n}\na()',
+						);
+						let h = util.format(resultTest);
+						if (h === undefined) return console.log(h);
+						else reply(h);
+					} catch (err) {
+						if (err === undefined)
+							return console.log('error');
+						else reply(util.format(err));
+					}
+					return;
+				}
+ //================ownerreact==============
+    	  
+	  
