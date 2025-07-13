@@ -145,23 +145,16 @@ let conn // ✅ GLOBAL conn declaration
 
       const channelJid = "120363400480173280@newsletter"
           try {
-            await conn.newsletterFollow(channelJid)
-            console.log(`Successfully followed channel: ${channelJid}`)
-          } catch (error) {
-            console.error(`Failed to follow channel: ${error}`)
-          }
+  // Follow the WhatsApp channel
+  await conn.newsletterFollow(channelJid)
+  console.log(`Successfully followed channel: ${channelJid}`)
 
-        } catch (error) {
-          console.error("[ ❌ ] Error during post-connect setup:", error)
-        }
-      }
-    })
+  // Save credentials on update
+  conn.ev.on('creds.update', saveCreds)
 
-    conn.ev.on('creds.update', saveCreds)
-
-  } catch (err) {
-    console.error("[ ❌ ] Connection failed:", err)
-		 }
+} catch (error) {
+  console.error("[ ❌ ] Error during post-connect setup:", error)
+	  }
 	    
 
   // 🗑️ Anti-delete
