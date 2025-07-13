@@ -1,12 +1,10 @@
 {
-  "name": "ZUKO-MD",
+  "name": "DAVE-MD",
   "version": "4.5.0",
-  "description": "A WhatsApp Bot Created By ZukoTech",
+  "description": "A WhatsApp Bot Created By DAVE",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name ZUKO-MD",
-    "stop": "pm2 stop ZUKO-MD",
-    "restart": "pm2 restart ZUKO-MD"
+    "start": "node index.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "6.7.9",
@@ -16,7 +14,6 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "@dark-yasiya/scrap": "1.0.1",
     "pino": "^7.0.5",
-    "pm2": "^6.0.5",
     "util": "^0.12.4",
     "express": "latest",
     "moment-timezone": "^0.5.45",
