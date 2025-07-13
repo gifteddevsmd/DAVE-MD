@@ -1,8 +1,5 @@
 build:
   docker:
-    worker: Dockerfile  # ⚠️ Fix: lowercase F
-
+      worker: Dockerfile 
 run:
-  worker: |
-    npm install -g pm2
-    npm start
+   worker: npm install -g pm2 && npm start
