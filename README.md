@@ -62,7 +62,35 @@ _*Dont forget to fork & star repo*_
 ---
 
 
+## 🔐 DAVE-PAIR — Get Your Session ID
 
+Get your WhatsApp session from one of the pairing sites below:
+
+[![🔰 Click Here to Get Session ID (Render)](https://img.shields.io/badge/Get%20Session%20ID-Render-green?style=for-the-badge&logo=render)](https://dave-md-source-codes.onrender.com)
+
+[![⚡ Click Here to Get Session ID (Heroku)](https://img.shields.io/badge/Get%20Session%20ID-Heroku-purple?style=for-the-badge&logo=heroku)](https://davesxmd-03209e7609ef.herokuapp.com)
+
+⚠️ Use the —second  server to generate a valid session ID  incase first one fails.
+
+---
+
+## 🚀 Deploy Your Own DAVE-MD Bot
+
+Click on any platform below to deploy the bot instantly
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/giftedsession/DAVE-MD)
+
+[![Deploy on Heroku](https://img.shields.io/badge/Deploy%20to-Heroku-7952B3?style=for-the-badge&logo=heroku)](https://dashboard.heroku.com/new?template=https://github.com/giftedsession/DAVE-MD)
+
+[![Deploy on Render](https://img.shields.io/badge/Deploy%20to-Render-35495E?style=for-the-badge&logo=render)](https://dashboard.render.com/)
+
+[![Deploy on Koyeb](https://img.shields.io/badge/Deploy%20to-Koyeb-161616?style=for-the-badge&logo=koyeb)](https://app.koyeb.com/)
+
+---
+
+### 📦 Source
+This setup powers the **𝐃𝐀𝐕𝐄-𝐌𝐃** WhatsApp bot.  
+GitHub: [https://github.com/giftedsession/DAVE-MD](https://github.com/giftedsession/DAVE-PAIR)
 
 
 
