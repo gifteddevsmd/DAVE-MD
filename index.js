@@ -872,12 +872,18 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
             return status;
         };
     conn.serializeM = mek => sms(conn, mek, store);
-  }
-  
-  app.get("/", (req, res) => {
-  res.send("ZUKO-MD STARTED ✅");
-  });
-  app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
-  setTimeout(() => {
-  connectToWA()
-  }, 4000);
+  } 
+// Route to confirm the bot is running
+app.get("/", (req, res) => {
+  res.send("𝐃𝐀𝐕𝐄-𝐌𝐃 STARTED ✅");
+});
+
+// Start the server and log it
+app.listen(port, () => {
+  console.log(`✅ Server listening on http://localhost:${port}`);
+});
+
+// Delay WhatsApp connection to avoid crashes
+setTimeout(() => {
+  connectToWA();
+}, 4000);
