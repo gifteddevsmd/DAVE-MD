@@ -137,43 +137,42 @@ https://youtube.com/@davlodavlo19
 https://github.com/giftedsession/DAVE-MD
 
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝐃𝐀𝐕𝐄 🇿🇼`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/7zfdcq.jpg` }, caption: up })
+    try {
+  conn.sendMessage(conn.user.id, {
+    image: { url: `https://files.catbox.moe/7zfdcq.jpg` },
+    caption: up
+  });
 
-          const channelJid = "120363400480173280@newsletter"
-          try {
-            await conn.newsletterFollow(channelJid)
-            console.log(`Successfully followed channel: ${channelJid}`)
-          } catch (error) {
-            console.error(`Failed to follow channel: ${error}`)
-          }
+  const channelJid = "120363400480173280@newsletter";
+  try {
+    await conn.newsletterFollow(channelJid);
+    console.log(`Successfully followed channel: ${channelJid}`);
+  } catch (error) {
+    console.error(`Failed to follow channel: ${error}`);
+  }
 
-        } catch (error) {
-          console.error("[ ❌ ] Error during post-connect setup:", error)
-        }
-      }
-    })
-
-    conn.ev.on('creds.update', saveCreds)
-
-  } catch (err) {
-    console.error("[ ❌ ] Connection failed:", err)
+} catch (error) {
+  console.error("[ ❌ ] Error during post-connect setup:", error);
 }
-	  
+
+conn.ev.on('creds.update', saveCreds);
+
 //==============================
 
 conn?.ev?.on('messages.update', async updates => {
   for (const update of updates) {
     if (update.update.message === null) {
-      console.log("Delete Detected:", JSON.stringify(update, null, 2))
-      await AntiDelete(conn, updates)
+      console.log("Delete Detected:", JSON.stringify(update, null, 2));
+      await AntiDelete(conn, updates);
     }
   }
-  });
-  //============================== 
+});
 
-  conn.ev.on("group-participants.update", (update) => GroupEvents(conn, update));	  
-	  
-  //=============readstatus=======
+//============================== 
+
+conn.ev.on("group-participants.update", (update) => GroupEvents(conn, update));
+
+//=============readstatus=======
         
   conn.ev.on('messages.upsert', async(mek) => {
     mek = mek.messages[0]
