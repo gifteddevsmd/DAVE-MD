@@ -20,8 +20,8 @@ const {
     fetchLatestBaileysVersion,
     Browsers
   } = require('@whiskeysockets/baileys')
-  
-  
+
+
   const l = console.log
   const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
   const { AntiDelDB, initializeAntiDeleteSettings, setAnti, getAnti, getAllAntiDeleteSettings, saveContact, loadMessage, getName, getChatSummary, saveGroupMetadata, getGroupMetadata, saveMessageCount, getInactiveGroupMembers, getGroupMembersMessageCount, saveMessage } = require('./data')
@@ -47,12 +47,12 @@ const {
   const online = config.ALWAYS_ONLINE
   const status = config.AUTO_STATUS_SEEN
   const ownerNumber = ['254104260236']
-  
+
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir)
   }
-  
+
   const clearTempDir = () => {
       fs.readdir(tempDir, (err, files) => {
           if (err) throw err;
@@ -63,24 +63,22 @@ const {
           }
       });
   }
-  
+
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
-  
-  //===================SESSION-AUTH============================
-if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
-if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-const sessdata = config.SESSION_ID.replace("Gifted~");
-const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
-filer.download((err, data) => {
-if(err) throw err
-fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
-console.log("Session downloaded ✅")
-})})}
 
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 9090;
+  //===================SESSION-AUTH============================
+  if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
+  if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
+  const sessdata = config.SESSION_ID.replace("Gifted~", "");
+  const buffer = Buffer.from(sessdata, 'base64');
+  fs.writeFile(__dirname + '/sessions/creds.json', buffer, () => {
+  console.log("Session decoded & saved ✅")
+  })}
+
+  const express = require("express");
+  const app = express();
+  const port = process.env.PORT || 9090;
   
   //=============================================
   
