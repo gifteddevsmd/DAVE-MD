@@ -2,12 +2,19 @@
   "name": "DAVE-MD",
   "version": "4.5.0",
   "description": "A WhatsApp Bot Created By DAVE",
-  "author": "Toxxic",
+  "author": "Gifted Dave",
   "license": "MIT",
   "main": "index.js",
   "type": "commonjs",
-  "scripts": {
-    "start": "node index.js"
+      "directories": {
+        "data": "data",
+        "plugins": "plugins",
+        "lib": "lib",
+        "assets": "assests",
+        "sessions": "tmp"
+    },
+    "scripts": {
+        "start": "node index.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "6.7.9",
