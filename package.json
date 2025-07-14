@@ -10,8 +10,8 @@
         "data": "data",
         "plugins": "plugins",
         "lib": "lib",
-        "assets": "assests",
-        "sessions": "tmp"
+        "assets": "assets",
+        "session": "temp"
     },
     "scripts": {
         "start": "node index.js"
