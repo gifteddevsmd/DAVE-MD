@@ -1,9 +1,9 @@
 {
-  "name": "𝐃𝐀𝐕𝐄-𝐌𝐃",
+  "name": "DAVE-MD",
   "description": "Javascript WhatsApp bot made by Dave",
   "logo": "https://files.catbox.moe/7zfdcq.jpg",
-  "repository": "https://github.com....",
-  "keywords": ["DAVE-MD", "WhatsApp", "Bot", "Baileys", "Heroku"],
+  "repository": "https://github.com/giftedsession/DAVE-MD",
+  "keywords": ["whatsapp", "bot", "baileys", "nodejs"],
   "env": {
     "SESSION_ID": {
       "description": "Put the session-id here.",
@@ -57,6 +57,14 @@
     "DESCRIPTION": {
       "description": "Bot footer or credits.",
       "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ Dave*"
+    },
+    "PORT": {
+      "description": "Port for the server.",
+      "value": "3000"
+    },
+    "TIME_ZONE": {
+      "description": "Timezone for the bot.",
+      "value": "Africa/Nairobi"
     }
   },
   "buildpacks": [
@@ -72,14 +80,5 @@
     {
       "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
     }
-  ],
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "standard-1x"
-    }
-  },
-  "scripts": {
-    "postdeploy": "echo ✅ 𝐃𝐀𝐕𝐄-𝐌𝐃 Deployed Successfully"
-  }
+  ]
 }
