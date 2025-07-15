@@ -1,70 +1,74 @@
 {
   "name": "DAVE-MD",
-  "description": "Javascript WhatsApp bot made by Dave",
-  "logo": "https://files.catbox.moe/7zfdcq.jpg",
+  "version": "2.0.0",
+  "description": "DAVE-MD WhatsApp Multi-Device Bot powered by Gifted Dave",
+  "logo": "https://i.imgur.com/yZN5Ynv.jpeg",
+  "keywords": ["whatsapp", "bot", "multi-device", "baileys", "dave-md"],
   "repository": "https://github.com/giftedsession/DAVE-MD",
-  "keywords": ["whatsapp", "bot", "baileys", "nodejs"],
+  "stack": "container",
+  "scripts": {
+    "start": "node index.js"
+  },
   "env": {
     "SESSION_ID": {
-      "description": "Put the session-id here.",
-      "required": true,
-      "value": ""
-    },
-    "STICKER_NAME": {
-      "description": "Your sticker pack name.",
-      "value": "DAVE-MD"
-    },
-    "PREFIX": {
-      "description": "Command prefix for your bot.",
-      "value": "."
-    },
-    "MODE": {
-      "description": "Bot mode: public, private, group, inbox",
-      "value": "public"
-    },
-    "AUTO_STATUS_SEEN": {
-      "description": "Auto view status.",
-      "value": "true"
-    },
-    "AUTO_STATUS_REACT": {
-      "description": "Auto react to viewed status.",
-      "value": "true"
-    },
-    "AUTO_STATUS_REPLY": {
-      "description": "Auto reply to status.",
-      "value": "false"
-    },
-    "AUTO_STATUS_MSG": {
-      "description": "Message for status replies.",
-      "value": "*SEEN YOUR STATUS BY DAVE-MD 🖤*"
-    },
-    "OWNER_NAME": {
-      "description": "Owner name",
-      "value": "Dave"
-    },
-    "OWNER_NUMBER": {
-      "description": "Owner's WhatsApp number.",
-      "value": "254104260236"
+      "description": "Paste your session ID here (must start with Gifted~)",
+      "value": "",
+      "required": true
     },
     "BOT_NAME": {
-      "description": "Bot display name.",
-      "value": "DAVE-MD"
+      "description": "Your bot's display name",
+      "value": "DAVE-MD",
+      "required": false
     },
-    "MENU_IMAGE_URL": {
-      "description": "Image used in menu or replies.",
-      "value": "https://files.catbox.moe/7zfdcq.jpg"
+    "OWNER_NUMBER": {
+      "description": "Your WhatsApp number with country code",
+      "value": "254104260236",
+      "required": true
     },
-    "DESCRIPTION": {
-      "description": "Bot footer or credits.",
-      "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ Dave*"
+    "PACK_NAME": {
+      "description": "Sticker pack name for your bot",
+      "value": "DAVE-MD Pack",
+      "required": false
     },
-    "PORT": {
-      "description": "Port for the server.",
-      "value": "3000"
+    "AUTHOR_NAME": {
+      "description": "Sticker author name",
+      "value": "Gifted Dave",
+      "required": false
     },
-    "TIME_ZONE": {
-      "description": "Timezone for the bot.",
-      "value": "Africa/Nairobi"
+    "AUTOSW_VIEW": {
+      "description": "Enable auto status view (true or false)",
+      "value": "true",
+      "required": true
+    },
+    "HEROKU_API": {
+      "description": "Your Heroku API key for environment control",
+      "value": "",
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Your Heroku app name (required for remote updates)",
+      "value": "",
+      "required": false
+    },
+    "MODE": {
+      "description": "Set bot mode: public, private, group or inbox",
+      "value": "public",
+      "required": false
+    },
+    "BOT_PREFIX": {
+      "description": "Bot command prefix (e.g. . or ! or leave blank)",
+      "value": ".",
+      "required": false
+    },
+    "AUTO_TYPING": {
+      "description": "Enable auto typing presence (true or false)",
+      "value": "false",
+      "required": false
+    },
+    "AUTO_RECORDING": {
+      "description": "Enable auto recording presence (true or false)",
+      "value": "false",
+      "required": false
     }
   },
   "buildpacks": [
